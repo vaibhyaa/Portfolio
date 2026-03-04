@@ -3,11 +3,13 @@
 import { assets } from "@/assets/assets";
 import Image from "next/image";
 import Logo from "../Ui/Logo";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const Navbar = () => {
   // 👇 Properly typed ref
   const sideMenuRef = useRef<HTMLUListElement | null>(null);
+
+  const [isScroll, setisScroll] = useState(false);
 
   const openMenu = () => {
     if (sideMenuRef.current) {
@@ -21,14 +23,24 @@ const Navbar = () => {
     }
   };
 
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      if (scrollY > 50) {
+        setisScroll(true);
+      } else {
+        setisScroll(false);
+      }
+    });
+  }, []);
+
   return (
     <nav
-      className="fixed w-full top-0 z-50 
+      className={`fixed w-full top-0 z-50 
       px-5 lg:px-8 xl:px-[8%] py-4 
       flex items-center justify-between 
       bg-linear-to-r 
       from-white/60 via-rose-100/40 to-white/60
-      backdrop-blur-xl border-b border-white/20"
+      backdrop-blur-xl border-b border-white/20 ${isScroll ? "bg-white bg-opacity-50 backdrop-blur-lg shadow-sm" : ""}`}
     >
       {/* Logo */}
       <a href="#top">
@@ -37,9 +49,9 @@ const Navbar = () => {
 
       {/* Desktop Menu */}
       <ul
-        className="hidden md:flex items-center gap-8 
-        bg-white backdrop-blur-md 
-        px-10 py-3 rounded-full shadow-sm"
+        className={`hidden md:flex items-center gap-8 
+         backdrop-blur-md ${isScroll ? "" : "bg-white shadow-sm bg-opacity-50"} 
+        px-10 py-3 rounded-full `}
       >
         {["Home", "About Me", "Services", "My Work", "Contact Me"].map(
           (item, index) => (
@@ -51,7 +63,7 @@ const Navbar = () => {
                 {item}
               </a>
             </li>
-          )
+          ),
         )}
       </ul>
 
@@ -59,11 +71,7 @@ const Navbar = () => {
       <div className="flex items-center gap-4">
         {/* Dark Mode Button */}
         <button className="p-2 rounded-full">
-          <Image
-            src={assets.moon_icon}
-            alt="Toggle Theme"
-            className="w-5"
-          />
+          <Image src={assets.moon_icon} alt="Toggle Theme" className="w-5" />
         </button>
 
         {/* Contact Button */}
@@ -76,11 +84,7 @@ const Navbar = () => {
           transition"
         >
           Contact
-          <Image
-            src={assets.arrow_icon}
-            alt="Arrow Icon"
-            className="w-3"
-          />
+          <Image src={assets.arrow_icon} alt="Arrow Icon" className="w-3" />
         </a>
 
         {/* Mobile Menu Button */}
@@ -88,11 +92,7 @@ const Navbar = () => {
           className="block md:hidden ml-3 cursor-pointer"
           onClick={openMenu}
         >
-          <Image
-            src={assets.menu_black}
-            alt="Open Menu"
-            className="w-5"
-          />
+          <Image src={assets.menu_black} alt="Open Menu" className="w-5" />
         </button>
       </div>
 
@@ -108,11 +108,7 @@ const Navbar = () => {
           className="absolute right-6 top-6 cursor-pointer"
           onClick={closeMenu}
         >
-          <Image
-            src={assets.close_black}
-            alt="Close Menu"
-            className="w-5"
-          />
+          <Image src={assets.close_black} alt="Close Menu" className="w-5" />
         </div>
 
         {["Home", "About Me", "Services", "My Work", "Contact Me"].map(
@@ -126,7 +122,7 @@ const Navbar = () => {
                 {item}
               </a>
             </li>
-          )
+          ),
         )}
       </ul>
     </nav>
