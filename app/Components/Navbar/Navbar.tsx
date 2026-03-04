@@ -1,14 +1,11 @@
 "use client";
 
-import { assets } from "@/assets/assets";
-import Image from "next/image";
-import Logo from "../Ui/Logo";
+import Logo from "../../Ui/Logo";
 import { useEffect, useRef, useState } from "react";
+import { FiMoon, FiArrowRight, FiMenu, FiX } from "react-icons/fi";
 
 const Navbar = () => {
-  // 👇 Properly typed ref
   const sideMenuRef = useRef<HTMLUListElement | null>(null);
-
   const [isScroll, setisScroll] = useState(false);
 
   const openMenu = () => {
@@ -24,13 +21,16 @@ const Navbar = () => {
   };
 
   useEffect(() => {
-    window.addEventListener("scroll", () => {
-      if (scrollY > 50) {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
         setisScroll(true);
       } else {
         setisScroll(false);
       }
-    });
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
@@ -40,7 +40,9 @@ const Navbar = () => {
       flex items-center justify-between 
       bg-linear-to-r 
       from-white/60 via-rose-100/40 to-white/60
-      backdrop-blur-xl border-b border-white/20 ${isScroll ? "bg-white bg-opacity-50 backdrop-blur-lg shadow-sm" : ""}`}
+      backdrop-blur-xl border-b border-white/20 ${
+        isScroll ? "bg-white bg-opacity-50 backdrop-blur-lg shadow-sm" : ""
+      }`}
     >
       {/* Logo */}
       <a href="#top">
@@ -53,25 +55,30 @@ const Navbar = () => {
          backdrop-blur-md ${isScroll ? "" : "bg-white shadow-sm bg-opacity-50"} 
         px-10 py-3 rounded-full `}
       >
-        {["Home", "About Me", "Services", "My Work", "Contact Me"].map(
-          (item, index) => (
-            <li key={index}>
-              <a
-                href={`#${item.toLowerCase().replace(" ", "")}`}
-                className="hover:text-rose-500 transition"
-              >
-                {item}
-              </a>
-            </li>
-          ),
-        )}
+        {[
+          "Home",
+          "About Me",
+          "Education",
+          "Experience",
+          "Project",
+          "Contact Me",
+        ].map((item, index) => (
+          <li key={index}>
+            <a
+              href={`#${item.toLowerCase().replace(" ", "")}`}
+              className="hover:text-rose-500 transition"
+            >
+              {item}
+            </a>
+          </li>
+        ))}
       </ul>
 
       {/* Right Side */}
       <div className="flex items-center gap-4">
         {/* Dark Mode Button */}
         <button className="p-2 rounded-full">
-          <Image src={assets.moon_icon} alt="Toggle Theme" className="w-5" />
+          <FiMoon className="w-5 h-5" />
         </button>
 
         {/* Contact Button */}
@@ -84,7 +91,7 @@ const Navbar = () => {
           transition"
         >
           Contact
-          <Image src={assets.arrow_icon} alt="Arrow Icon" className="w-3" />
+          <FiArrowRight className="w-3 h-3" />
         </a>
 
         {/* Mobile Menu Button */}
@@ -92,7 +99,7 @@ const Navbar = () => {
           className="block md:hidden ml-3 cursor-pointer"
           onClick={openMenu}
         >
-          <Image src={assets.menu_black} alt="Open Menu" className="w-5" />
+          <FiMenu className="w-5 h-5" />
         </button>
       </div>
 
@@ -108,22 +115,27 @@ const Navbar = () => {
           className="absolute right-6 top-6 cursor-pointer"
           onClick={closeMenu}
         >
-          <Image src={assets.close_black} alt="Close Menu" className="w-5" />
+          <FiX className="w-5 h-5" />
         </div>
 
-        {["Home", "About Me", "Services", "My Work", "Contact Me"].map(
-          (item, index) => (
-            <li key={index}>
-              <a
-                href={`#${item.toLowerCase().replace(" ", "")}`}
-                className="hover:text-rose-500 transition"
-                onClick={closeMenu}
-              >
-                {item}
-              </a>
-            </li>
-          ),
-        )}
+        {[
+          "Home",
+          "About Me",
+          "Education",
+          "Experience",
+          "Project",
+          "Contact Me",
+        ].map((item, index) => (
+          <li key={index}>
+            <a
+              href={`#${item.toLowerCase().replace(" ", "")}`}
+              className="hover:text-rose-500 transition"
+              onClick={closeMenu}
+            >
+              {item}
+            </a>
+          </li>
+        ))}
       </ul>
     </nav>
   );

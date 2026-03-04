@@ -155,6 +155,11 @@ import right_arrow from "./right-arrow.png";
 import send_icon from "./send-icon.png";
 import right_arrow_bold from "./right-arrow-bold.png";
 import right_arrow_bold_dark from "./right-arrow-bold-dark.png";
+import { FaCode } from "react-icons/fa";
+import { BiSolidSchool } from "react-icons/bi";
+import { GoProjectSymlink } from "react-icons/go";
+import { IconType } from "react-icons";
+import { TbBriefcase } from "react-icons/tb";
 
 /* =========================
    TYPES
@@ -163,21 +168,28 @@ import right_arrow_bold_dark from "./right-arrow-bold-dark.png";
 type WorkItem = {
   title: string;
   description: string;
-  bgImage: string;
 };
 
-type ServiceItem = {
-  icon: StaticImageData;
-  title: string;
+export type EducationItem = {
+  degree: string;
+  institution: string;
+  duration: string;
   description: string;
-  link: string;
+  // grade: number;
 };
 
 type InfoItem = {
-  icon: StaticImageData;
-  iconDark: StaticImageData;
+  icon: IconType;
   title: string;
   description: string;
+};
+
+type ExperienceItem = {
+  icon: IconType;
+  duration: string;
+  position: string;
+  companyName: string;
+  description: string[];
 };
 /* =========================
    ASSETS
@@ -185,116 +197,105 @@ type InfoItem = {
 
 export const assets = {
   user_image,
-  code_icon,
-  code_icon_dark,
-  edu_icon,
-  edu_icon_dark,
-  project_icon,
-  project_icon_dark,
   vscode,
   firebase,
   figma,
   git,
   mongodb,
-  right_arrow_white,
-  logo,
-  logo_dark,
-  mail_icon,
-  mail_icon_dark,
   profile_img,
-  download_icon,
-  hand_icon,
-  header_bg_color,
-  moon_icon,
-  sun_icon,
-  arrow_icon,
-  arrow_icon_dark,
-  menu_black,
-  menu_white,
-  close_black,
-  close_white,
-  web_icon,
-  mobile_icon,
-  ui_icon,
-  graphics_icon,
-  right_arrow,
-  send_icon,
-  right_arrow_bold,
-  right_arrow_bold_dark,
 };
 
 /* =========================
    DATA
 ========================= */
 
+export const experienceData: ExperienceItem[] = [
+  {
+    icon: TbBriefcase,
+    position: "System Engineer",
+    companyName: "Infosys",
+    duration: "Dec 2022 – Dec 2023",
+    description: [
+      "Assisted in the development of web applications using JavaScript and Python, contributing to backend logic and database interactions with MySQL.",
+      " Conducted thorough testing and debugging of applications to ensure high-quality deliverables, including regression testing of features after updates. ",
+      "Collaborated with QA teams to develop testing strategies and contribute to test case design.",
+    ],
+  },
+  {
+    icon: TbBriefcase,
+    position: "Senior System Engineer",
+    companyName: "Infosys",
+    duration: "Jan 2024 – July 2025",
+    description: [
+      "Developed and maintained scalable web applications using HTML, CSS, JavaScript, TypeScript, and React.",
+      " Collaborated with cross-functional teams to design and implement RESTful APIs, enhancing system integration and functionality. Conducted regression testing to ensure the stability and performance of applications post-deployment, identifying and resolving defects.",
+      "Implemented automated testing frameworks, reducing manual testing time by 40% and improving overall testing accuracy.",
+    ],
+  },
+  {
+    icon: TbBriefcase,
+    position: "Technology Analyst",
+    companyName: "Infosys",
+    duration: "August 2025 – Present",
+    description: [
+      "Contributed to the migration of a legacy Meteor.js template-based EMS application to a React-based micro-frontend architecture using Webpack Module Federation, enabling incremental module-by-module transition (2 of 8 modules migrated).",
+      " Ensured seamless interoperability between newly developed React modules and existing Meteor components within a single running application, leveraging WebSockets for real-time communication and maintaining integration with Java backend services.",
+      "Improved frontend performance and reduced architectural complexity by adopting a lightweight React UI layer without introducing additional full-stack frameworks, while maintaining stable cross-framework navigation and deployment.",
+    ],
+  },
+];
+
 export const workData: WorkItem[] = [
   {
     title: "Frontend project",
     description: "Web Design",
-    bgImage: "/work-1.png",
   },
   {
     title: "Geo based app",
     description: "Mobile App",
-    bgImage: "/work-2.png",
   },
   {
     title: "Photography site",
     description: "Web Design",
-    bgImage: "/work-3.png",
   },
   {
     title: "UI/UX designing",
     description: "UI/UX Design",
-    bgImage: "/work-4.png",
   },
 ];
 
-export const serviceData: ServiceItem[] = [
+export const educationData: EducationItem[] = [
   {
-    icon: assets.web_icon,
-    title: "Web design",
-    description: "Web development is the process of building, programming...",
-    link: "",
-  },
-  {
-    icon: assets.mobile_icon,
-    title: "Mobile app",
+    degree: "Bachelor of Engineering (B.E.)",
+    institution: "Shivaji University",
+    duration: "2017 – 2021",
     description:
-      "Mobile app development involves creating software for mobile devices...",
-    link: "",
+      "Focused on software development, data structures, databases, and web technologies. Completed multiple academic and practical projects.",
+    // grade: 61,
   },
   {
-    icon: assets.ui_icon,
-    title: "UI/UX design",
+    degree: "Higher Secondary Certificate (12th)",
+    institution: "Maharashtra State Board",
+    duration: "2014 – 2016",
     description:
-      "UI/UX design focuses on creating a seamless user experience...",
-    link: "",
-  },
-  {
-    icon: assets.graphics_icon,
-    title: "Graphics design",
-    description: "Creative design solutions to enhance visual communication...",
-    link: "",
+      "Completed higher secondary education with a science stream, building a strong foundation in mathematics and computer science.",
+    // grade: 62,
   },
 ];
 
 export const infoList: InfoItem[] = [
   {
-    icon: assets.code_icon,
-    iconDark: assets.code_icon_dark,
+    icon: FaCode,
     title: "Languages",
     description: "HTML, CSS, JavaScript, React Js, Next Js",
   },
   {
-    icon: assets.edu_icon,
-    iconDark: assets.edu_icon_dark,
+    icon: BiSolidSchool,
     title: "Education",
     description: "B.Tech in Computer Science",
   },
   {
-    icon: assets.project_icon,
-    iconDark: assets.project_icon_dark,
+    icon: GoProjectSymlink,
     title: "Projects",
     description: "Built more than 5 projects",
   },
