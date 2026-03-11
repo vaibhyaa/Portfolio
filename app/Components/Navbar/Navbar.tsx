@@ -60,7 +60,7 @@ const Navbar = () => {
           "About Me",
           "Education",
           "Experience",
-          "Project",
+          "Projects",
           "Contact Me",
         ].map((item, index) => (
           <li key={index}>
@@ -123,7 +123,7 @@ const Navbar = () => {
           "About Me",
           "Education",
           "Experience",
-          "Project",
+          "Projects",
           "Contact Me",
         ].map((item, index) => (
           <li key={index}>

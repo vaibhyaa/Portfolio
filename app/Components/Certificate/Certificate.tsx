@@ -8,10 +8,13 @@ import CertificateDescription from "./CertificateDescription";
 type CertificateType = {
   name: string;
   description: string;
-  icon: React.ElementType;
-  position: string;
-  companyName: string;
-  duration: string;
+  icon: React.ComponentType<any>;
+  position?: string;
+  companyName?: string;
+  duration?: string;
+  completedAt?: string;
+  credentialUrl?: string;
+  skills?: string[];
 };
 
 const Certificate = () => {
@@ -21,7 +24,7 @@ const Certificate = () => {
   return (
     <section
       id="certificate"
-      className="w-full px-6 md:px-[10%] py-28 bg-linear-to-b from-slate-50 via-white to-white scroll-mt-24"
+      className="w-full px-6 md:px-[10%] py-28 bg-linear-to-b from-white bg-slate-100 scroll-mt-24"
     >
       {/* Header */}
       <div className="text-center max-w-2xl mx-auto mb-20">
@@ -63,10 +66,10 @@ const Certificate = () => {
                 <div className="flex justify-center mb-5">
                   <div
                     className="p-4 rounded-xl bg-indigo-50
-                    group-hover:bg-indigo-100
+                    // group-hover:bg-indigo-100
                     transition duration-300"
                   >
-                    <Icon className="text-2xl text-indigo-600 group-hover:scale-110 transition duration-300" />
+                    <Icon className="text-2xl  group-hover:scale-137 transition duration-300" />
                   </div>
                 </div>
 

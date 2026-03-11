@@ -31,6 +31,18 @@ const Experience: React.FC = () => {
           shadow-[0_20px_60px_rgba(0,0,0,0.08)]
           flex flex-col lg:flex-row gap-16"
         >
+          {/* RIGHT SIDE — Image */}
+          <div className="flex-1 flex items-center justify-center">
+            <div className="relative w-full h-105">
+              <Image
+                src="/expBlack.svg"
+                alt="Experience Illustration"
+                fill
+                className="object-contain rounded-3xl"
+                priority
+              />
+            </div>
+          </div>
           {/* LEFT SIDE — Timeline */}
           <div className="flex-1 relative border-l-2 border-indigo-200 pl-10 space-y-12">
             {experienceData.map((exp, index) => {
@@ -47,7 +59,7 @@ const Experience: React.FC = () => {
                 >
                   {/* Timeline Dot */}
                   <div
-                    className="absolute -left-[52px] top-8 w-11 h-11
+                    className="absolute -left-13 top-8 w-11 h-11
                     flex items-center justify-center
                     bg-linear-to-r from-indigo-500 to-blue-500
                     text-white rounded-full shadow-lg"
@@ -69,19 +81,6 @@ const Experience: React.FC = () => {
                 </div>
               );
             })}
-          </div>
-
-          {/* RIGHT SIDE — Image */}
-          <div className="flex-1 flex items-center justify-center">
-            <div className="relative w-full h-[420px]">
-              <Image
-                src="/expBlack.svg"
-                alt="Experience Illustration"
-                fill
-                className="object-contain rounded-3xl"
-                priority
-              />
-            </div>
           </div>
         </div>
       </div>

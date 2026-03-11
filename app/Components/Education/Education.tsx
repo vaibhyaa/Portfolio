@@ -8,7 +8,7 @@ const Education = () => {
   return (
     <section
       id="education"
-      className="w-full py-24 px-6 md:px-[10%] bg-linear-to-b from-white to-slate-50"
+      className="w-full py-24 px-6 md:px-[10%] bg-linear-to-b from-white bg-slate-100"
     >
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}

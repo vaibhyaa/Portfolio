@@ -63,11 +63,11 @@ const ExperienceDescription: React.FC<Props> = ({
         </h2>
 
         <p className="text-indigo-600 font-semibold mt-2">
-          {experienceDescription.companyName}
+          <b>{experienceDescription.companyName}</b>
         </p>
 
         <p className="text-sm text-slate-500 mt-1 mb-6">
-          {experienceDescription.duration}
+          <b>{experienceDescription.duration}</b>
         </p>
 
         {/* Description Points */}
