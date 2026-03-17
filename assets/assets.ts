@@ -185,7 +185,7 @@ export const experienceData: ExperienceItem[] = [
 
 export const educationData: EducationItem[] = [
   {
-    degree: "Bachelor of Engineering (Computer Science)",
+    degree: "Bachelor of Engineering ",
     institution: "Shivaji University",
     duration: "2017 – 2021",
     description:
