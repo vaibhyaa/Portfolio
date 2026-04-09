@@ -1,13 +1,30 @@
-
-
 "use client";
 
 import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { infoList, toolsData } from "@/assets/assets";
-import { FaReact, FaNodeJs } from "react-icons/fa";
-import { SiJavascript, SiMongodb } from "react-icons/si";
+import { infoList } from "@/assets/assets";
+import {
+  FaReact,
+  FaNodeJs,
+  FaHtml5,
+  FaCss3Alt,
+  FaGitAlt,
+  FaGithub,
+  FaJava,
+  FaPython,
+} from "react-icons/fa";
+import {
+  SiJavascript,
+  SiMongodb,
+  SiNextdotjs,
+  SiExpress,
+  SiTypescript,
+  SiTailwindcss,
+  SiSupabase,
+} from "react-icons/si";
+import { BsMicrosoft } from "react-icons/bs";
+import { TbApi } from "react-icons/tb";
 
 const About: React.FC = () => {
   const container = {
@@ -39,34 +56,93 @@ const About: React.FC = () => {
     },
   };
 
-  const techLabels = [
-    "HTML",
-    "CSS",
-    "JavaScript",
-    "React",
-    "Next.js",
-    "Node.js",
-    "Express",
-    "MongoDB",
-    "TypeScript",
-    "Tailwind",
-    "Git",
-    "GitHub",
-  ];
-
-  const techColors = [
-    "text-orange-500 border-orange-200 bg-orange-50", // HTML
-    "text-blue-500 border-blue-200 bg-blue-50", // CSS
-    "text-yellow-500 border-yellow-200 bg-yellow-50", // JS
-    "text-cyan-500 border-cyan-200 bg-cyan-50", // React
-    "text-slate-900 border-slate-300 bg-slate-50", // Next
-    "text-green-600 border-green-200 bg-green-50", // Node
-    "text-gray-700 border-gray-300 bg-gray-50", // Express
-    "text-green-500 border-green-200 bg-green-50", // Mongo
-    "text-sky-600 border-sky-200 bg-sky-50", // TS
-    "text-cyan-500 border-cyan-200 bg-cyan-50", // Tailwind
-    "text-orange-600 border-orange-200 bg-orange-50", // Git
-    "text-slate-900 border-slate-300 bg-slate-50", // GitHub
+  // ✅ FIXED: single source of truth for label + icon + color
+  const techStack = [
+    {
+      label: "HTML",
+      icon: FaHtml5,
+      color: "text-orange-500 border-orange-200 bg-orange-50",
+    },
+    {
+      label: "CSS",
+      icon: FaCss3Alt,
+      color: "text-blue-500 border-blue-200 bg-blue-50",
+    },
+    {
+      label: "JavaScript",
+      icon: SiJavascript,
+      color: "text-yellow-500 border-yellow-200 bg-yellow-50",
+    },
+    {
+      label: "React",
+      icon: FaReact,
+      color: "text-cyan-500 border-cyan-200 bg-cyan-50",
+    },
+    {
+      label: "Next.js",
+      icon: SiNextdotjs,
+      color: "text-slate-900 border-slate-300 bg-slate-50",
+    },
+    {
+      label: "Node.js",
+      icon: FaNodeJs,
+      color: "text-green-600 border-green-200 bg-green-50",
+    },
+    {
+      label: "Express",
+      icon: SiExpress,
+      color: "text-gray-700 border-gray-300 bg-gray-50",
+    },
+    {
+      label: "MongoDB",
+      icon: SiMongodb,
+      color: "text-green-500 border-green-200 bg-green-50",
+    },
+    {
+      label: "TypeScript",
+      icon: SiTypescript,
+      color: "text-sky-600 border-sky-200 bg-sky-50",
+    },
+    {
+      label: "Tailwind",
+      icon: SiTailwindcss,
+      color: "text-cyan-500 border-cyan-200 bg-cyan-50",
+    },
+    {
+      label: "Git",
+      icon: FaGitAlt,
+      color: "text-orange-600 border-orange-200 bg-orange-50",
+    },
+    {
+      label: "GitHub",
+      icon: FaGithub,
+      color: "text-slate-900 border-slate-300 bg-slate-50",
+    },
+    {
+      label: "Java",
+      icon: FaJava,
+      color: "text-red-600 border-red-200 bg-red-50",
+    },
+    {
+      label: "Python",
+      icon: FaPython,
+      color: "text-blue-600 border-blue-200 bg-blue-50",
+    },
+    {
+      label: "MS Office",
+      icon: BsMicrosoft,
+      color: "text-indigo-600 border-indigo-200 bg-indigo-50",
+    },
+    {
+      label: "Supabase",
+      icon: SiSupabase,
+      color: "text-emerald-600 border-emerald-200 bg-emerald-50",
+    },
+    {
+      label: "RESTful API",
+      icon: TbApi,
+      color: "text-violet-600 border-violet-200 bg-violet-50",
+    },
   ];
 
   return (
@@ -162,68 +238,8 @@ const About: React.FC = () => {
                 />
               </motion.div>
 
-              {/* overlay gradient */}
               <div className="absolute inset-0 bg-linear-to-t from-slate-900/20 via-transparent to-transparent" />
             </div>
-
-            {/* floating tech badge 1 */}
-
-            {/* <motion.div
-              animate={{ y: [0, -8, 0] }}
-              transition={{
-                duration: 5,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-              className="absolute left-2 top-8 z-20 hidden items-center gap-3 rounded-2xl border border-white/80 bg-white/90 px-4 py-3 shadow-xl backdrop-blur-md md:flex"
-            >
-              <FaReact className="text-xl text-cyan-500" />
-              <span className="text-sm font-bold text-slate-700">React.js</span>
-            </motion.div> */}
-
-            {/* floating tech badge 2 */}
-            {/* <motion.div
-              animate={{ x: [0, 8, 0] }}
-              transition={{
-                duration: 6,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-              className="absolute -right-2 top-1/3 z-20 hidden items-center gap-3 rounded-2xl border border-white/80 bg-white/90 px-4 py-3 shadow-xl backdrop-blur-md md:flex"
-            >
-              <SiJavascript className="text-xl text-yellow-500" />
-              <span className="text-sm font-bold text-slate-700">
-                JavaScript
-              </span>
-            </motion.div> */}
-
-            {/* floating tech badge 3 */}
-            {/* <motion.div
-              animate={{ y: [0, 10, 0] }}
-              transition={{
-                duration: 5.5,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-              className="absolute bottom-20 -left-2 z-20 hidden items-center gap-3 rounded-2xl border border-white/80 bg-white/90 px-4 py-3 shadow-xl backdrop-blur-md md:flex"
-            >
-              <FaNodeJs className="text-xl text-green-600" />
-              <span className="text-sm font-bold text-slate-700">Node.js</span>
-            </motion.div> */}
-
-            {/* floating tech badge 4 */}
-            {/* <motion.div
-              animate={{ x: [0, -8, 0] }}
-              transition={{
-                duration: 6.5,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-              className="absolute bottom-8 right-4 z-20 hidden items-center gap-3 rounded-2xl border border-white/80 bg-white/90 px-4 py-3 shadow-xl backdrop-blur-md md:flex"
-            >
-              <SiMongodb className="text-xl text-green-500" />
-              <span className="text-sm font-bold text-slate-700">MongoDB</span>
-            </motion.div> */}
           </div>
         </motion.div>
 
@@ -232,14 +248,12 @@ const About: React.FC = () => {
           variants={container}
           className="rounded-4xl border border-slate-200 bg-white/85 p-6 shadow-xl backdrop-blur-md md:p-8 xl:p-10"
         >
-          {/* top label */}
           <motion.div variants={item} className="mb-5">
             <span className="inline-flex items-center rounded-full border border-indigo-200 bg-indigo-50 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-indigo-700">
               Full Stack Web Developer
             </span>
           </motion.div>
 
-          {/* main heading */}
           <motion.h3
             variants={item}
             className="text-2xl font-bold leading-tight text-slate-900 md:text-4xl"
@@ -248,7 +262,6 @@ const About: React.FC = () => {
             frontend focus.
           </motion.h3>
 
-          {/* description */}
           <motion.p
             variants={item}
             className="mt-6 text-sm leading-7 text-slate-600 md:text-base md:leading-8"
@@ -345,7 +358,7 @@ const About: React.FC = () => {
                   key={itemData.title}
                   variants={cardItem}
                   whileHover={{ y: -6, scale: 1.01 }}
-                  className="group rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition-all duration-300 hover:border-indigo-300 hover:shadow-lg"
+                  className="group rounded-2xl border border-slate-300 bg-white p-5 shadow-sm transition-all duration-300 hover:border-indigo-300 hover:shadow-lg"
                 >
                   <div className="flex items-start gap-4">
                     <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-linear-to-br from-indigo-500 to-blue-500 shadow-md">
@@ -366,7 +379,7 @@ const About: React.FC = () => {
             })}
           </motion.div>
 
-          {/* tools / tech stack */}
+          {/* tech stack */}
           <motion.div variants={item} className="mt-8">
             <h4 className="text-base font-semibold text-slate-900 md:text-lg">
               Core Tech Stack
@@ -376,24 +389,20 @@ const About: React.FC = () => {
               variants={container}
               className="mt-5 flex flex-wrap gap-3"
             >
-              {toolsData.map((tool, index) => {
-                const Icon = tool.icon;
-                const label = techLabels[index] || "Tech";
-                const colorClasses =
-                  techColors[index] ||
-                  "text-slate-700 border-slate-200 bg-slate-50";
+              {techStack.map((tech, index) => {
+                const Icon = tech.icon;
 
                 return (
                   <motion.div
-                    key={index}
+                    key={tech.label}
                     variants={cardItem}
                     whileHover={{ y: -4, scale: 1.05 }}
                     whileTap={{ scale: 0.98 }}
-                    className={`group inline-flex items-center gap-2 rounded-xl border px-4 py-2.5 shadow-sm transition-all duration-300 hover:shadow-md ${colorClasses}`}
+                    className={`group inline-flex items-center gap-2 rounded-xl border px-4 py-2.5 shadow-sm transition-all duration-300 hover:shadow-md ${tech.color}`}
                   >
                     <Icon className="text-lg transition-transform duration-300 group-hover:scale-110" />
                     <span className="text-xs font-semibold md:text-sm">
-                      {label}
+                      {tech.label}
                     </span>
                   </motion.div>
                 );
